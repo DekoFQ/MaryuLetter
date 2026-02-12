@@ -1,203 +1,176 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Para Ti</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para ti</title>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --bg: #f8f6f2;
-      --text: #2d2d2d;
-      --accent: #8b6f47;
-      --soft: #eae5dc;
-    }
+<style>
+  /* ===== FONDO Y TIPOGRAFÍA ===== */
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #f6f1e8 url('https://www.transparenttextures.com/patterns/paper-fibers.png') repeat;
+    color: #4b3f35;
+    overflow-x: hidden;
+  }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    text-align: center;
+  }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
+  h1, h2 {
+    margin-bottom: 20px;
+  }
 
-    section {
-      min-height: 100vh;
-      padding: 80px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease;
-    }
+  h1 { font-size: 2.8rem; }
+  h2 { font-size: 2rem; color: #b08968; }
 
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  p {
+    max-width: 700px;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+    margin-bottom: 20px;
+  }
 
-    .container {
-      max-width: 800px;
-    }
+  .fade.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-    h1, h2 {
-      font-family: 'Playfair Display', serif;
-      margin-bottom: 20px;
-    }
+  .divider {
+    width: 60px;
+    height: 3px;
+    background: #b08968;
+    margin: 20px auto 40px;
+    border-radius: 10px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease 0.2s;
+  }
 
-    h1 {
-      font-size: 3rem;
-    }
+  .divider.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-    h2 {
-      font-size: 2rem;
-      color: var(--accent);
-    }
+  .btn-scroll {
+    margin-top: 40px;
+    padding: 12px 25px;
+    background: #b08968;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+  }
 
-    p {
-      font-size: 1.1rem;
-      margin-bottom: 20px;
-    }
+  .btn-scroll:hover {
+    background: #a47148;
+    transform: scale(1.05);
+  }
 
-    .divider {
-      width: 60px;
-      height: 2px;
-      background: var(--accent);
-      margin: 20px auto 40px;
-    }
+  footer {
+    padding: 40px;
+    text-align: center;
+    font-size: 0.9rem;
+    opacity: 0.6;
+  }
 
-    .button {
-      display: inline-block;
-      padding: 12px 28px;
-      border: 1px solid var(--accent);
-      color: var(--accent);
-      text-decoration: none;
-      border-radius: 30px;
-      transition: 0.3s;
-      margin-top: 20px;
-    }
-
-    .button:hover {
-      background: var(--accent);
-      color: white;
-    }
-
-    footer {
-      padding: 40px 20px;
-      text-align: center;
-      font-size: 0.9rem;
-      background: var(--soft);
-    }
-
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2.2rem;
-      }
-
-      h2 {
-        font-size: 1.6rem;
-      }
-    }
-  </style>
+  /* ===== RESPONSIVE PARA MÓVIL ===== */
+  @media(max-width:600px){
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.6rem; }
+    p { font-size: 1rem; }
+    .btn-scroll { padding: 10px 20px; font-size: 0.95rem; }
+  }
+</style>
 </head>
+
 <body>
 
-  <!-- Hero -->
-  <section>
-    <div class="container">
-      <h1>Siempre fue real</h1>
-      <div class="divider"></div>
-      <p>
-        No escribo esto desde la urgencia,
-        sino desde la calma.
-      </p>
-    </div>
-  </section>
+<!-- SECCIÓN 1 -->
+<section>
+  <h1 class="fade">Querida Maryuri</h1>
+  <div class="divider fade"></div>
+  <p class="fade">No hice esto para presionarte.</p>
+  <p class="fade">Lo hice porque necesitaba expresar lo que siento de forma tranquila y sincera.</p>
 
-  <!-- Lo que siento -->
-  <section>
-    <div class="container">
-      <h2>Lo que siento</h2>
-      <div class="divider"></div>
-      <p>
-        Te amé de la mejor manera que supe hacerlo.
-        Tal vez no perfecta, pero sincera.
-      </p>
-      <p>
-        No escribo para reprochar,
-        escribo para reconocer.
-      </p>
-    </div>
-  </section>
+  <!-- <button class="btn-scroll" onclick="scrollToSection('historia')">
+    Sigue bajando
+  </button> -->
+</section>
 
-  <!-- Lo que aprendí -->
-  <section>
-    <div class="container">
-      <h2>Lo que aprendí</h2>
-      <div class="divider"></div>
-      <p>
-        Aprendí que amar también es escuchar mejor.
-      </p>
-      <p>
-        Aprendí que a veces el orgullo habla más fuerte que el miedo.
-      </p>
-      <p>
-        Y aprendí que las conversaciones difíciles
-        son necesarias si algo vale la pena.
-      </p>
-    </div>
-  </section>
+<!-- SECCIÓN 2 -->
+<section id="historia">
+  <!-- <h2 class="fade">Nuestra historia</h2>
+  <div class="divider fade"></div>
+  <p class="fade">Aquí puedes escribir lo que significó la relación para ti.</p>
+  <p class="fade">Sin reproches. Solo verdad.</p> -->
+</section>
 
-  <!-- Lo que quiero -->
-  <section>
-    <div class="container">
-      <h2>Lo que quiero</h2>
-      <div class="divider"></div>
-      <p>
-        No quiero forzar nada.
-        Solo quiero saber si aún existe la posibilidad
-        de hablar con calma.
-      </p>
-      <p>
-        Si no es viable, lo entenderé.
-        Si lo es, me gustaría construir bien.
-      </p>
+<!-- SECCIÓN 3 -->
+<section>
+  <!-- <h2 class="fade">Lo que entendí</h2>
+  <div class="divider fade"></div>
+  <p class="fade">Este espacio es para asumir tu parte con madurez.</p>
+  <p class="fade">Sin culpas. Solo responsabilidad emocional.</p> -->
+</section>
 
-      <!-- Puedes activar esto si algún día quieres -->
-      <!-- <a href="#" class="button">Hablar</a> -->
-    </div>
-  </section>
+<!-- SECCIÓN 4 -->
+<!-- <section>
+  <h2 class="fade">Lo que quiero ahora</h2>
+  <div class="divider fade"></div>
+  <p class="fade">No es volver por volver.</p>
+  <p class="fade">Es hablar. Ver si aún existe algo sano que construir.</p>
+  <p class="fade">Y si no… también aceptar eso.</p>
+</section> -->
 
-  <footer>
-    Con respeto y cariño.
-  </footer>
+<!-- SECCIÓN 5 -->
+<!-- <section>
+  <h2 class="fade">La decisión es tuya</h2>
+  <div class="divider fade"></div>
+  <p class="fade">Si quieres hablar, aquí estoy.</p>
+  <p class="fade">Si decides no hacerlo, también respetaré eso.</p>
+</section> -->
 
-  <script>
-    const sections = document.querySelectorAll("section");
+<footer>
+  Con amor.
+</footer>
 
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        }
-      });
-    }, { threshold: 0.2 });
+<script>
+  function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+  }
 
-    sections.forEach(section => {
-      observer.observe(section);
+  // Animación fade por párrafo que se reinicia al volver a subir
+  const faders = document.querySelectorAll('.fade');
+  const observerOptions = { threshold: 0.3 };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add("animate");
+      } else {
+        entry.target.classList.remove("animate");
+      }
     });
-  </script>
+  }, observerOptions);
+
+  faders.forEach(fader => observer.observe(fader));
+</script>
 
 </body>
 </html>

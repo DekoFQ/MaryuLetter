@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para Ti</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f8f6f2;
+      --text: #2d2d2d;
+      --accent: #8b6f47;
+      --soft: #eae5dc;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    section {
+      min-height: 100vh;
+      padding: 80px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .container {
+      max-width: 800px;
+    }
+
+    h1, h2 {
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 3rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: var(--accent);
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    .divider {
+      width: 60px;
+      height: 2px;
+      background: var(--accent);
+      margin: 20px auto 40px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 28px;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+      border-radius: 30px;
+      transition: 0.3s;
+      margin-top: 20px;
+    }
+
+    .button:hover {
+      background: var(--accent);
+      color: white;
+    }
+
+    footer {
+      padding: 40px 20px;
+      text-align: center;
+      font-size: 0.9rem;
+      background: var(--soft);
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      h2 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <section>
+    <div class="container">
+      <h1>Siempre fue real</h1>
+      <div class="divider"></div>
+      <p>
+        No escribo esto desde la urgencia,
+        sino desde la calma.
+      </p>
+    </div>
+  </section>
+
+  <!-- Lo que siento -->
+  <section>
+    <div class="container">
+      <h2>Lo que siento</h2>
+      <div class="divider"></div>
+      <p>
+        Te amé de la mejor manera que supe hacerlo.
+        Tal vez no perfecta, pero sincera.
+      </p>
+      <p>
+        No escribo para reprochar,
+        escribo para reconocer.
+      </p>
+    </div>
+  </section>
+
+  <!-- Lo que aprendí -->
+  <section>
+    <div class="container">
+      <h2>Lo que aprendí</h2>
+      <div class="divider"></div>
+      <p>
+        Aprendí que amar también es escuchar mejor.
+      </p>
+      <p>
+        Aprendí que a veces el orgullo habla más fuerte que el miedo.
+      </p>
+      <p>
+        Y aprendí que las conversaciones difíciles
+        son necesarias si algo vale la pena.
+      </p>
+    </div>
+  </section>
+
+  <!-- Lo que quiero -->
+  <section>
+    <div class="container">
+      <h2>Lo que quiero</h2>
+      <div class="divider"></div>
+      <p>
+        No quiero forzar nada.
+        Solo quiero saber si aún existe la posibilidad
+        de hablar con calma.
+      </p>
+      <p>
+        Si no es viable, lo entenderé.
+        Si lo es, me gustaría construir bien.
+      </p>
+
+      <!-- Puedes activar esto si algún día quieres -->
+      <!-- <a href="#" class="button">Hablar</a> -->
+    </div>
+  </section>
+
+  <footer>
+    Con respeto y cariño.
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll("section");
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, { threshold: 0.2 });
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+
+</body>
+</html>
