@@ -5,159 +5,152 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Para ti</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
-  /* ===== FONDO Y TIPOGRAFÍA ===== */
+  /* ===== FONDO GENERAL MÁS CREMA ===== */
   body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    background: #f6f1e8 url('https://www.transparenttextures.com/patterns/paper-fibers.png') repeat;
-    color: #4b3f35;
+    background: #f3e8d7;
+    background-image: url('https://www.transparenttextures.com/patterns/aged-paper.png');
+    color: #4a3b2f;
     overflow-x: hidden;
   }
 
+  /* ===== CONTENEDOR TIPO CARTA ===== */
+  .letter {
+    max-width: 750px;
+    margin: 60px auto;
+    padding: 60px 30px;
+    background: #fffaf0;
+    box-shadow: 
+      0 10px 40px rgba(0,0,0,0.15),
+      inset 0 0 60px rgba(180,140,100,0.15);
+    border-radius: 6px;
+    position: relative;
+  }
+
+  .letter::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+    opacity: 0.25;
+    pointer-events: none;
+  }
+
   section {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 60px 20px;
+    margin-bottom: 80px;
     text-align: center;
   }
 
   h1, h2 {
+    font-family: 'Playfair Display', serif;
     margin-bottom: 20px;
   }
 
-  h1 { font-size: 2.8rem; }
-  h2 { font-size: 2rem; color: #b08968; }
+  h1 {
+    font-size: 2.6rem;
+  }
 
+  h2 {
+    font-size: 1.9rem;
+    color: #a67c52;
+  }
+
+  .divider {
+    width: 70px;
+    height: 2px;
+    background: #c6a27e;
+    margin: 20px auto 40px;
+    border-radius: 10px;
+  }
+
+  /* ===== PÁRRAFOS CON FADE + ZOOM ===== */
   p {
-    max-width: 700px;
-    line-height: 1.8;
+    line-height: 1.9;
     font-size: 1.1rem;
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 0.8s ease;
     margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(40px) scale(0.96);
+    transition: all 0.9s ease;
   }
 
   .fade.animate {
     opacity: 1;
-    transform: translateY(0);
-  }
-
-  .divider {
-    width: 60px;
-    height: 3px;
-    background: #b08968;
-    margin: 20px auto 40px;
-    border-radius: 10px;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.8s ease 0.2s;
-  }
-
-  .divider.animate {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .btn-scroll {
-    margin-top: 40px;
-    padding: 12px 25px;
-    background: #b08968;
-    border: none;
-    border-radius: 30px;
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-
-  .btn-scroll:hover {
-    background: #a47148;
-    transform: scale(1.05);
+    transform: translateY(0) scale(1);
   }
 
   footer {
-    padding: 40px;
     text-align: center;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     opacity: 0.6;
+    margin-top: 40px;
   }
 
-  /* ===== RESPONSIVE PARA MÓVIL ===== */
+  /* ===== RESPONSIVE ===== */
   @media(max-width:600px){
-    h1 { font-size: 2.2rem; }
-    h2 { font-size: 1.6rem; }
+    .letter {
+      margin: 30px 15px;
+      padding: 40px 20px;
+    }
+
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.5rem; }
     p { font-size: 1rem; }
-    .btn-scroll { padding: 10px 20px; font-size: 0.95rem; }
   }
 </style>
 </head>
 
 <body>
 
-<!-- SECCIÓN 1 -->
+<div class="letter">
+
 <section>
-  <h1 class="fade">Querida Maryuri</h1>
-  <div class="divider fade"></div>
-  <p class="fade">No hice esto para presionarte.</p>
-  <p class="fade">Lo hice porque necesitaba expresar lo que siento de forma sincera.</p>
-
-  <!-- <button class="btn-scroll" onclick="scrollToSection('historia')">
-    Sigue bajando
-  </button> -->
+  <h1 class="fade">Querida Maryuri…</h1>
+  <div class="divider"></div>
+  <p class="fade">Espero que cuando leas esto te encuentres bien.</p>
+  <p class="fade">No hice esto con la intención de presionarte, lo hice porque hay cosas que quiero expresarte.</p>
 </section>
 
-<!-- SECCIÓN 2 -->
-<section id="historia">
-  <!-- <h2 class="fade">Nuestra historia</h2>
-  <div class="divider fade"></div>
-  <p class="fade">Aquí puedes escribir lo que significó la relación para ti.</p>
-  <p class="fade">Sin reproches. Solo verdad.</p> -->
-</section>
-
-<!-- SECCIÓN 3 -->
 <section>
-  <!-- <h2 class="fade">Lo que entendí</h2>
-  <div class="divider fade"></div>
-  <p class="fade">Este espacio es para asumir tu parte con madurez.</p>
-  <p class="fade">Sin culpas. Solo responsabilidad emocional.</p> -->
+  <h2 class="fade">Nuestra historia</h2>
+  <div class="divider"></div>
+  <p class="fade">Aquí puedes escribir lo que significó ella para ti.</p>
+  <p class="fade">Desde la gratitud, no desde el reproche.</p>
 </section>
 
-<!-- SECCIÓN 4 -->
-<!-- <section>
+<section>
+  <h2 class="fade">Lo que entendí</h2>
+  <div class="divider"></div>
+  <p class="fade">Este espacio puede hablar de crecimiento.</p>
+  <p class="fade">De lo que aprendiste. De lo que ahora ves diferente.</p>
+</section>
+
+<section>
   <h2 class="fade">Lo que quiero ahora</h2>
-  <div class="divider fade"></div>
-  <p class="fade">No es volver por volver.</p>
-  <p class="fade">Es hablar. Ver si aún existe algo sano que construir.</p>
-  <p class="fade">Y si no… también aceptar eso.</p>
-</section> -->
+  <div class="divider"></div>
+  <p class="fade">No es volver por nostalgia.</p>
+  <p class="fade">Es conversar y ver si aún existe algo sano que construir.</p>
+</section>
 
-<!-- SECCIÓN 5 -->
-<!-- <section>
+<section>
   <h2 class="fade">La decisión es tuya</h2>
-  <div class="divider fade"></div>
+  <div class="divider"></div>
   <p class="fade">Si quieres hablar, aquí estoy.</p>
   <p class="fade">Si decides no hacerlo, también respetaré eso.</p>
-</section> -->
+</section>
 
 <footer>
-  Con amor.
+  Escrito con serenidad.
 </footer>
 
-<script>
-  function scrollToSection(id) {
-    document.getElementById(id).scrollIntoView({ behavior: "smooth" });
-  }
+</div>
 
-  // Animación fade por párrafo que se reinicia al volver a subir
+<script>
   const faders = document.querySelectorAll('.fade');
-  const observerOptions = { threshold: 0.3 };
+  const observerOptions = { threshold: 0.25 };
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
