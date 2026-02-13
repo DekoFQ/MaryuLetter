@@ -3,166 +3,259 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para ti</title>
+<title>Un pequeño mensaje</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
-  /* ===== FONDO GENERAL MÁS CREMA ===== */
-  body {
+
+body {
     margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: #f3e8d7;
-    background-image: url('https://www.transparenttextures.com/patterns/aged-paper.png');
-    color: #4a3b2f;
+    font-family: 'Quicksand', sans-serif;
+    background: #f4e9da;
+    color: #5c4a3f;
+    scroll-behavior: smooth;
     overflow-x: hidden;
-  }
+}
 
-  /* ===== CONTENEDOR TIPO CARTA ===== */
-  .letter {
-    max-width: 750px;
-    margin: 60px auto;
-    padding: 60px 30px;
-    background: #fffaf0;
-    box-shadow: 
-      0 10px 40px rgba(0,0,0,0.15),
-      inset 0 0 60px rgba(180,140,100,0.15);
-    border-radius: 6px;
-    position: relative;
-  }
-
-  .letter::before {
+/* Textura tipo papel */
+body::before {
     content: "";
-    position: absolute;
+    position: fixed;
     inset: 0;
-    background: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
-    opacity: 0.25;
+    background-image: radial-gradient(rgba(0,0,0,0.03) 1px, transparent 1px);
+    background-size: 4px 4px;
     pointer-events: none;
-  }
+    z-index: 0;
+}
 
-  section {
-    margin-bottom: 80px;
-    text-align: center;
-  }
+section {
+    min-height: 100vh;
+    padding: 70px 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s ease;
+}
 
-  h1, h2 {
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.container {
+    max-width: 500px;
+    margin: auto;
+}
+
+h1, h2 {
     font-family: 'Playfair Display', serif;
     margin-bottom: 20px;
-  }
+}
 
-  h1 {
-    font-size: 2.6rem;
-  }
-
-  h2 {
-    font-size: 1.9rem;
-    color: #a67c52;
-  }
-
-  .divider {
-    width: 70px;
-    height: 2px;
-    background: #c6a27e;
-    margin: 20px auto 40px;
-    border-radius: 10px;
-  }
-
-  /* ===== PÁRRAFOS CON FADE + ZOOM ===== */
-  p {
-    line-height: 1.9;
-    font-size: 1.1rem;
-    margin-bottom: 20px;
-    opacity: 0;
-    transform: translateY(40px) scale(0.96);
-    transition: all 0.9s ease;
-  }
-
-  .fade.animate {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-
-  footer {
-    text-align: center;
-    font-size: 0.85rem;
-    opacity: 0.6;
+/* Botón */
+.button {
     margin-top: 40px;
-  }
+    padding: 12px 25px;
+    border-radius: 25px;
+    background: #d8c2a0;
+    border: none;
+    color: #5c4a3f;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s;
+}
 
-  /* ===== RESPONSIVE ===== */
-  @media(max-width:600px){
-    .letter {
-      margin: 30px 15px;
-      padding: 40px 20px;
-    }
+.button:hover {
+    background: #c9ad85;
+}
 
-    h1 { font-size: 2rem; }
-    h2 { font-size: 1.5rem; }
-    p { font-size: 1rem; }
-  }
+/* -------- GATOS -------- */
+
+.cat-frame {
+    background: #fff8ef;
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.15);
+    transform: rotate(-2deg);
+}
+
+.cat-frame img {
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+}
+
+.cat-text {
+    font-size: 13px;
+    margin-top: 8px;
+    font-style: italic;
+}
+
+.cat-floating {
+    margin-top: 40px;
+    text-align: center;
+    animation: float 4s ease-in-out infinite;
+}
+
+.cat-side {
+    position: relative;
+    max-width: 220px;
+    margin: 60px 0;
+    animation: float 5s ease-in-out infinite;
+}
+
+.cat-side.left {
+    margin-right: auto;
+}
+
+.cat-side.right {
+    margin-left: auto;
+}
+
+.arrow {
+    position: absolute;
+    top: -30px;
+    left: -50px;
+    width: 120px;
+    transform: rotate(-15deg);
+    opacity: 0.8;
+}
+
+/* Animación flotante */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    h1 { font-size: 24px; }
+    h2 { font-size: 20px; }
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="letter">
+<!-- SECCIÓN 1 -->
+<section class="reveal">
+    <div class="container">
+        <h1>Hola 🤍</h1>
+        <p>
+            Hice esto porque quería expresarte algo de una forma distinta.
+            No formal, no pesada, solo sincera.
+        </p>
 
-<section>
-  <h1 class="fade">Querida Maryuri…</h1>
-  <div class="divider"></div>
-  <p class="fade">Espero que cuando leas esto te encuentres bien.</p>
-  <p class="fade">No hice esto con la intención de presionarte, lo hice porque hay cosas que quiero expresarte.</p>
+        <div class="cat-floating">
+            <div class="cat-frame">
+                <img src="https://img.freepik.com/foto-gratis/primer-disparo-vertical-lindo-gato-europeo-pelo-corto_181624-34587.jpg?semt=ais_user_personalization&w=740&q=80" alt="gatito">
+            </div>
+
+            <svg class="arrow" viewBox="0 0 200 200">
+                <path d="M10 150 Q 100 20 170 120"
+                      stroke="#5c4a3f"
+                      stroke-width="4"
+                      fill="none"
+                      stroke-linecap="round"/>
+                <polygon points="165,110 180,120 165,135" fill="#5c4a3f"/>
+            </svg>
+
+            <div class="cat-text">Este vino porque sí.</div>
+        </div>
+
+    </div>
 </section>
 
-<section>
-  <h2 class="fade">Nuestra historia</h2>
-  <div class="divider"></div>
-  <!-- <p class="fade">Aquí puedes escribir lo que significó ella para ti.</p>
-  <p class="fade">Desde la gratitud, no desde el reproche.</p> -->
+<!-- SECCIÓN 2 -->
+<section class="reveal">
+    <div class="container">
+        <h2>Algo importante</h2>
+        <p>
+            Nunca quise irme. Siempre quise construir, incluso en medio de los problemas.
+        </p>
+        <p>
+            Si algo hice mal, lo reconozco.
+            Si algo te dolió, jamás fue mi intención.
+        </p>
+        <p>
+            Solo quería ser elegido.
+        </p>
+
+        <div class="cat-side right">
+            <div class="cat-frame">
+                <img src="https://images.ctfassets.net/denf86kkcx7r/4IPlg4Qazd4sFRuCUHIJ1T/f6c71da7eec727babcd554d843a528b8/gatocomuneuropeo-97?fm=webp&w=612" alt="gatito">
+            </div>
+            <div class="cat-text">Este apoya las conversaciones sinceras.</div>
+        </div>
+
+    </div>
 </section>
 
-<section>
-  <h2 class="fade">Lo que entendí</h2>
-  <div class="divider"></div>
-  <!-- <p class="fade">Este espacio puede hablar de crecimiento.</p>
-  <p class="fade">De lo que aprendiste. De lo que ahora ves diferente.</p> -->
+<!-- SECCIÓN 3 -->
+<section class="reveal">
+    <div class="container">
+        <h2>Para que no te aburras 🐱</h2>
+        <p>
+            Solo quería dejar algo ligero en medio de todo esto.
+        </p>
+
+        <div class="cat-side left">
+            <div class="cat-frame">
+                <img src="https://petuxe.com/cdn/shop/articles/gatos_egipcios.jpg?v=1724833793" alt="gatito">
+            </div>
+            <div class="cat-text">Este solo quería aparecer aquí.</div>
+        </div>
+
+    </div>
 </section>
 
-<section>
-  <h2 class="fade">Lo que quiero ahora</h2>
-  <div class="divider"></div>
-  <!-- <p class="fade">No es volver por nostalgia.</p>
-  <p class="fade">Es conversar y ver si aún existe algo sano que construir.</p> -->
+<!-- SECCIÓN FINAL -->
+<section class="reveal">
+    <div class="container">
+        <h2>Lo que quiero</h2>
+        <p>
+            No quiero forzar nada.
+            Solo quiero saber si podemos hablar.
+        </p>
+        <p>
+            Con calma.
+            Sin presión.
+            Sin orgullo.
+        </p>
+
+        <button class="button" onclick="alert('Gracias por leer 🤍')">
+            Gracias por leer
+        </button>
+    </div>
 </section>
-
-<section>
-  <h2 class="fade">La decisión es tuya</h2>
-  <div class="divider"></div>
-  <p class="fade">Si quieres hablar, aquí estoy.</p>
-  <p class="fade">Si decides no hacerlo, también respetaré eso.</p>
-</section>
-
-<footer>
-  Con amor.
-</footer>
-
-</div>
 
 <script>
-  const faders = document.querySelectorAll('.fade');
-  const observerOptions = { threshold: 0.25 };
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.classList.add("animate");
-      } else {
-        entry.target.classList.remove("animate");
-      }
+const reveals = document.querySelectorAll(".reveal");
+
+function revealOnScroll() {
+    reveals.forEach(section => {
+        const windowHeight = window.innerHeight;
+        const elementTop = section.getBoundingClientRect().top;
+
+        if (elementTop < windowHeight - 100) {
+            section.classList.add("visible");
+        } else {
+            section.classList.remove("visible");
+        }
     });
-  }, observerOptions);
+}
 
-  faders.forEach(fader => observer.observe(fader));
+window.addEventListener("scroll", revealOnScroll);
+revealOnScroll();
+
 </script>
 
 </body>
