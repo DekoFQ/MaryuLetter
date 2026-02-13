@@ -1,271 +1,371 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para Maryuri</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Maryuri</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Quicksand:wght@400;500&display=swap"
+    rel="stylesheet">
 
-<style>
+  <style>
+    /* -------- MINI JUEGO -------- */
 
-body {
-    margin: 0;
-    font-family: 'Quicksand', sans-serif;
-    background: #f4e9da;
-    color: #5c4a3f;
-    scroll-behavior: smooth;
-    overflow-x: hidden;
-}
+    .fun-box {
+      text-align: center;
+      margin-top: 60px;
+    }
 
-/* Textura tipo papel */
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background-image: radial-gradient(rgba(0,0,0,0.03) 1px, transparent 1px);
-    background-size: 4px 4px;
-    pointer-events: none;
-    z-index: 0;
-}
+    .fun-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
 
-section {
-    min-height: 100vh;
-    padding: 70px 25px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-    z-index: 1;
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 1s ease;
-}
+    .fun-button {
+      padding: 12px 30px;
+      border-radius: 30px;
+      border: none;
+      background: #c9ad85;
+      color: #5c4a3f;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+    }
 
-section.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
+    .fun-button:hover {
+      background: #b89a73;
+      transform: translateY(-3px);
+    }
 
-.container {
-    max-width: 500px;
-    margin: auto;
-}
+    #modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
 
-h1, h2 {
-    font-family: 'Playfair Display', serif;
-    margin-bottom: 20px;
-}
+    .modal-content {
+      background: #fff8ef;
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      max-width: 320px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+      animation: pop 0.4s ease;
+    }
 
-/* Botón */
-.button {
-    margin-top: 40px;
-    padding: 12px 25px;
-    border-radius: 25px;
-    background: #d8c2a0;
-    border: none;
-    color: #5c4a3f;
-    font-weight: 500;
-    cursor: pointer;
-    transition: 0.3s;
-}
+    .modal-content h3 {
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 20px;
+    }
 
-.button:hover {
-    background: #c9ad85;
-}
+    .modal-content button {
+      padding: 10px 20px;
+      border-radius: 20px;
+      border: none;
+      background: #d8c2a0;
+      cursor: pointer;
+    }
 
-/* -------- GATOS -------- */
+    @keyframes pop {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
 
-.cat-frame {
-    background: #fff8ef;
-    padding: 10px;
-    border-radius: 12px;
-    box-shadow: 0 15px 25px rgba(0,0,0,0.15);
-    transform: rotate(-2deg);
-}
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
 
-.cat-frame img {
-    width: 100%;
-    border-radius: 8px;
-    display: block;
-}
 
-.cat-text {
-    font-size: 13px;
-    margin-top: 8px;
-    font-style: italic;
-}
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background: #f4e9da;
+      color: #5c4a3f;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
 
-.cat-floating {
-    margin-top: 40px;
-    text-align: center;
-    animation: float 4s ease-in-out infinite;
-}
+    /* Textura tipo papel */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+      background-size: 4px 4px;
+      pointer-events: none;
+      z-index: 0;
+    }
 
-.cat-side {
-    position: relative;
-    max-width: 220px;
-    margin: 60px 0;
-    animation: float 5s ease-in-out infinite;
-}
+    section {
+      min-height: 100vh;
+      padding: 70px 25px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s ease;
+    }
 
-.cat-side.left {
-    margin-right: auto;
-}
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-.cat-side.right {
-    margin-left: auto;
-}
+    .container {
+      max-width: 500px;
+      margin: auto;
+    }
 
-.arrow {
-    position: absolute;
-    top: -30px;
-    left: -50px;
-    width: 120px;
-    transform: rotate(-15deg);
-    opacity: 0.8;
-}
+    h1,
+    h2 {
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 20px;
+    }
 
-/* Animación flotante */
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-8px); }
-    100% { transform: translateY(0px); }
-}
+    /* Botón */
+    .button {
+      margin-top: 40px;
+      padding: 12px 25px;
+      border-radius: 25px;
+      background: #d8c2a0;
+      border: none;
+      color: #5c4a3f;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.3s;
+    }
 
-/* Responsive */
-@media (max-width: 480px) {
-    h1 { font-size: 24px; }
-    h2 { font-size: 20px; }
-}
+    .button:hover {
+      background: #c9ad85;
+    }
 
-</style>
+    /* -------- GATOS -------- */
+
+    .cat-frame {
+      background: #fff8ef;
+      padding: 10px;
+      border-radius: 12px;
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+      transform: rotate(-2deg);
+    }
+
+    .cat-frame img {
+      width: 100%;
+      border-radius: 8px;
+      display: block;
+    }
+
+    .cat-text {
+      font-size: 13px;
+      margin-top: 8px;
+      font-style: italic;
+    }
+
+    .cat-floating {
+      margin-top: 40px;
+      text-align: center;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .cat-side {
+      position: relative;
+      max-width: 220px;
+      margin: 60px 0;
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .cat-side.left {
+      margin-right: auto;
+    }
+
+    .cat-side.right {
+      margin-left: auto;
+    }
+
+    .arrow {
+      position: absolute;
+      top: -30px;
+      left: -50px;
+      width: 120px;
+      transform: rotate(-15deg);
+      opacity: 0.8;
+    }
+
+    /* Animación flotante */
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+
+      100% {
+        transform: translateY(0px);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 24px;
+      }
+
+      h2 {
+        font-size: 20px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- SECCIÓN 1 -->
-<section class="reveal">
+  <!-- SECCIÓN 1 -->
+  <section class="reveal">
     <div class="container">
-        <h1>Querida Maryuri</h1>
-        <p>
-            Pensé mucho en hacer esto o no.             
-        </p>
-        <p>
-          Primero, disculpa si es incómodo para ti. 
-          Quiero hacerlo lo más breve posible. 
-        </p>
-        <p>
-          Segundo, añadí imagenes de gatos (como el que ves aquí abajo). Lo hice porque sé lo mucho que te gustan
-          y tal vez ayuden a que sea menos aburrido leer esto.
-        </p>
+      <h1>Querida Maryuri</h1>
+      <p>
+        Pensé mucho en hacer esto o no.
+      </p>
+      <p>
+        Primero, disculpa si es incómodo para ti.
+        Quiero hacerlo lo más breve posible.
+      </p>
+      <p>
+        Segundo, añadí imagenes de gatos (como el que ves aquí abajo). Lo hice porque sé lo mucho que te gustan
+        y tal vez ayuden a que sea menos aburrido leer esto.
+      </p>
 
-        <div class="cat-floating">
-            <div class="cat-frame">
-                <img src="https://img.freepik.com/foto-gratis/primer-disparo-vertical-lindo-gato-europeo-pelo-corto_181624-34587.jpg?semt=ais_user_personalization&w=740&q=80" alt="gatito">
-            </div>
-
-            <svg class="arrow" viewBox="0 0 200 200">
-                <path d="M10 150 Q 100 20 170 120"
-                      stroke="#5c4a3f"
-                      stroke-width="4"
-                      fill="none"
-                      stroke-linecap="round"/>
-                <polygon points="165,110 180,120 165,135" fill="#5c4a3f"/>
-            </svg>
-
-            <div class="cat-text">Hello.</div>
+      <div class="cat-floating">
+        <div class="cat-frame">
+          <img
+            src="https://img.freepik.com/foto-gratis/primer-disparo-vertical-lindo-gato-europeo-pelo-corto_181624-34587.jpg?semt=ais_user_personalization&w=740&q=80"
+            alt="gatito">
         </div>
 
-    </div>
-</section>
+        <svg class="arrow" viewBox="0 0 200 200">
+          <path d="M10 150 Q 100 20 170 120" stroke="#5c4a3f" stroke-width="4" fill="none" stroke-linecap="round" />
+          <polygon points="165,110 180,120 165,135" fill="#5c4a3f" />
+        </svg>
 
-<!-- SECCIÓN 2 -->
-<section class="reveal">
-    <div class="container">
-        <h2>Algo importante</h2>
-        <p>
-            Sé que dije que respetaría tu decisión, pero espero que me puedas entender, por esta vez
-        </p>
-        <p>
-            Esto no es por un impulso, esto es por lo que siento
-        </p>
-        <p>
-            Esto no es una forma de convencerte de nada,
-            es una invitación a mirar las cosas diferente
-        </p>
-
-        <div class="cat-side right">
-            <div class="cat-frame">
-                <img src="https://images.ctfassets.net/denf86kkcx7r/4IPlg4Qazd4sFRuCUHIJ1T/f6c71da7eec727babcd554d843a528b8/gatocomuneuropeo-97?fm=webp&w=612" alt="gatito">
-            </div>
-            <div class="cat-text">A ver si te acuerdas.</div>
-        </div>
-
-    </div>
-</section>
-
-<!-- SECCIÓN 3 -->
-<section class="reveal">
-    <div class="container">
-        <h2>No sé título poner</h2>
-        <p>
-            Quiero pedirte disculpas por todos los errores que cometí, por todas las veces que te hice sentir mal, por todas las veces que te hice sentir sola, por todas las veces que te hice sentir que no te escuchaba
-        </p>
-        <p>Nunca he querido hacerte daño, siempre he querdido cuidarte</p>
-        <p>
-          Eres infinitamente valiosa para mi, yo no me canso de ti
-        </p>
-        <p>
-          Eres el amor de mi vida
-        </p>
-        <p>
-          Nunca me he querido ir de tu lado,
-          siempre he querido quedarme y construir, sin importar que tan 
-          complicadas puedan estar las cosas
-        </p>
-        
-
-        <div class="cat-side left">
-            <div class="cat-frame">
-                <img src="https://images.ctfassets.net/denf86kkcx7r/206sKHHdoJovwu9AzcdCQ/2b7b64112272693f8c3eeb4b491626b9/gato_negro_1_.jpg" alt="gatito">
-            </div>
-            <div class="cat-text">Gatico.</div>
-        </div>
-
-    </div>
-</section>
-
-<section class="reveal">
-  <div class="container">
-    <h2>Momento de descanso 🐱</h2>
-    <p>
-      Mira, un gatito durmiendo.
-    </p>
-
-    <div class="cat-side left">
-      <div class="cat-frame">
-        <img
-          src="https://d34xtejqjqcp3x.cloudfront.net/store/70a83f4eeb318405fcdd17457b7b4413.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAICTJHRPRHFBTAWCA%2F20260207%2Fsa-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260207T041349Z&X-Amz-Expires=900&X-Amz-SignedHeaders=host&X-Amz-Signature=8bc3f49c0890b2189b656d9216738b633a06c6865b29f62e77bc610d7de35445"
-          alt="gatito">
+        <div class="cat-text">Hello.</div>
       </div>
-      <div class="cat-text">Este porque sí, está descansando.</div>
+
     </div>
+  </section>
 
-  </div>
-</section>
-
-<!-- SECCIÓN 4 -->
-<section class="reveal">
+  <!-- SECCIÓN 2 -->
+  <section class="reveal">
     <div class="container">
-        <h2>Sincero...</h2>
-        <p>
-            Solo quiero ser sincero contigo, sin intención de presionarte
-        </p>
-        <p>
-          Mentiría si no dijera que te extraño, mentiría si no dijera que te amo
-        </p>
-        <!-- <p>
+      <h2>Algo importante</h2>
+      <p>
+        Sé que dije que respetaría tu decisión, pero espero que me puedas entender.
+      </p>
+      <p>
+        Esto no es por un impulso, esto es por lo que siento.
+      </p>
+      <p>
+        Esto no es una forma de convencerte de nada,
+        es una invitación a mirar las cosas diferente.
+      </p>
+
+      <div class="cat-side right">
+        <div class="cat-frame">
+          <img
+            src="https://images.ctfassets.net/denf86kkcx7r/4IPlg4Qazd4sFRuCUHIJ1T/f6c71da7eec727babcd554d843a528b8/gatocomuneuropeo-97?fm=webp&w=612"
+            alt="gatito">
+        </div>
+        <div class="cat-text">A ver si te acuerdas.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECCIÓN 3 -->
+  <section class="reveal">
+    <div class="container">
+      <h2>No sé qué título poner</h2>
+      <p>
+        Quiero pedirte disculpas por todos los errores que cometí, por todas las veces que te hice sentir mal, por todas
+        las veces que te hice sentir que no te escuchaba
+      </p>
+      <p>Nunca he querido hacerte daño, siempre he querdido cuidarte</p>
+      <p>
+        Eres infinitamente valiosa para mi, yo no me canso de ti
+      </p>
+      <p>
+        Eres el amor de mi vida
+      </p>
+      <p>
+        Nunca me he querido ir de tu lado,
+        siempre he querido quedarme y construir contigo, sin importar que tan
+        complicadas puedan estar las cosas
+      </p>
+
+
+      <div class="cat-side left">
+        <div class="cat-frame">
+          <img
+            src="https://images.ctfassets.net/denf86kkcx7r/206sKHHdoJovwu9AzcdCQ/2b7b64112272693f8c3eeb4b491626b9/gato_negro_1_.jpg"
+            alt="gatito">
+        </div>
+        <div class="cat-text">Gatico.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="container">
+      <h2>Descanso time 🐱</h2>
+      <p>
+        Mira, un gatito durmiendo.
+      </p>
+
+      <div class="cat-side left">
+        <div class="cat-frame">
+          <img
+            src="https://d34xtejqjqcp3x.cloudfront.net/store/70a83f4eeb318405fcdd17457b7b4413.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAICTJHRPRHFBTAWCA%2F20260207%2Fsa-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260207T041349Z&X-Amz-Expires=900&X-Amz-SignedHeaders=host&X-Amz-Signature=8bc3f49c0890b2189b656d9216738b633a06c6865b29f62e77bc610d7de35445"
+            alt="gatito">
+        </div>
+        <div class="cat-text">Este porque sí, está descansando.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECCIÓN 4 -->
+  <section class="reveal">
+    <div class="container">
+      <h2>Sincero...</h2>
+      <p>
+        Solo quiero ser sincero contigo, sin presionarte
+      </p>
+      <p>
+        No se trata solo de extrañarte, es más que eso
+      </p>
+      <p>
+        Se trata de lo que significas para mi, de lo que siento por ti, de que quisiera que pudieramos luchar juntos
+      </p>
+      <p>
+        Quiero que podamos elegirnos mutuamente
+      </p>
+      <!-- <p>
           Eres el amor de mi vida
         </p>
         <p>
@@ -273,20 +373,22 @@ h1, h2 {
           siempre he querido quedarme y construir, sin importar que tan 
           complicadas puedan estar las cosas
         </p> -->
-        
 
-        <div class="cat-side right">
-            <div class="cat-frame">
-                <img src="https://veterinariaaguara.com/wp-content/uploads/2022/04/10-datos-curiosos-sobre-los-gatos-veterinaria-aguara.webp" alt="gatito">
-            </div>
-            <div class="cat-text">Este está bonito jajaja.</div>
+
+      <div class="cat-side right">
+        <div class="cat-frame">
+          <img
+            src="https://veterinariaaguara.com/wp-content/uploads/2022/04/10-datos-curiosos-sobre-los-gatos-veterinaria-aguara.webp"
+            alt="gatito">
         </div>
+        <div class="cat-text">Este está bonito jajaja.</div>
+      </div>
 
     </div>
-</section>
+  </section>
 
-<!-- SECCIÓN 5 -->
-<!-- <section class="reveal">
+  <!-- SECCIÓN 5 -->
+  <!-- <section class="reveal">
   <div class="container">
     <h2>Para que no te aburras 🐱</h2>
     <p>
@@ -305,54 +407,159 @@ h1, h2 {
   </div>
 </section> -->
 
-<!-- SECCIÓN FINAL -->
-<section class="reveal">
+  <!-- SECCIÓN FINAL -->
+  <section class="reveal">
     <div class="container">
-        <h2>Lo que quiero</h2>
-        <p>
-            No quiero forzar nada. 
-            Solo quiero saber si podemos hablar.
-        </p>
-        <p>
-            Con calma.
-            Sin presión.
-            Sin orgullo.
-        </p>
+      <h2>Lo que quiero</h2>
+      <p>
+        Realmente no quiero forzar nada.
+        Solo me gustaría saber si estás dispuesta a hablar.
+      </p>
+      <p>
+        Con calma.
+        Sin presión.
+        Sin orgullo.
+      </p>
+      <p>
+        No te pido que hablemos para volver y seguir en lo mismo
+      </p>
+      <p>
+        Te pido que hablemos para entendernos
+      </p>
 
-         <div class="cat-side left">
-            <div class="cat-frame">
-                <img src="https://petuxe.com/cdn/shop/articles/gatos_egipcios.jpg?v=1724833793" alt="gatito">
-            </div>
-            <div class="cat-text">Un gato calvo. Está feo.</div>
+
+      <div class="cat-side left">
+        <div class="cat-frame">
+          <img src="https://petuxe.com/cdn/shop/articles/gatos_egipcios.jpg?v=1724833793" alt="gatito">
         </div>
+        <div class="cat-text">Un gato calvo. Está feo.</div>
+      </div>
 
-        <button class="button" onclick="alert('Gracias por leer 🤍')">
-            Gracias por leer
-        </button>
+      <button class="button" onclick="alert('Gracias por leer 🤍')">
+        Gracias por leer
+      </button>
     </div>
-</section>
+  </section>
 
-<script>
+  <!-- SECCIÓN FINAL FINAL -->
+  <section class="reveal">
+    <div class="container">
+      <h2>Conclusión</h2>
+      <p>
+        Aquí te pido algo
+      </p>
+      <p>
+        Si quieres hablar, escribeme un sí, mandame un punto, lo que sea jaja
+      </p>
+      <p>
+        Una de las formas en la que me gustaría saber (en caso de que si quieras),
+        sería verte puesto el anillo, solo eso, yo me encargo de lo demás
+      </p>
+      <p>
+        Si definitivamente no quieres, está bien, solo no tienes que hacer nada, y yo lo entenderé
+      </p>
 
-const reveals = document.querySelectorAll(".reveal");
 
-function revealOnScroll() {
-    reveals.forEach(section => {
+      <div class="cat-side left">
+        <div class="cat-frame">
+          <img src="https://pbs.twimg.com/media/E2XP3VWWEAA-XGl.jpg" alt="gatito">
+        </div>
+        <div class="cat-text">Un gato con crisis existencial.</div>
+      </div>
+
+      
+
+      <div class="container fun-box">
+        <button class="button" >
+        Gracias por leer
+      </button>
+
+      <h2 id="mensaje" class="fun-title">No des click </h2>
+
+      <button id="boton" class="fun-button">
+        No lo hagas
+      </button>
+
+    </div>
+
+    </div>
+  </section>
+
+  <!-- <section class="reveal">
+    <div class="container fun-box">
+
+      <h2 id="mensaje" class="fun-title">No des click </h2>
+
+      <button id="boton" class="fun-button">
+        No lo hagas
+      </button>
+
+    </div>
+  </section> -->
+
+  <div id="modal">
+    <div class="modal-content">
+      <!-- <h3>Por qué tan rev?</h3> -->
+      <p>Si llegaste hasta aquí… tal vez sí quieras hablar 🤍</p>
+      <p>Te amo</p>
+      <button onclick="cerrarModal()">Cerrar</button>
+    </div>
+  </div>
+
+
+  <script>
+
+    const reveals = document.querySelectorAll(".reveal");
+
+    function revealOnScroll() {
+      reveals.forEach(section => {
         const windowHeight = window.innerHeight;
         const elementTop = section.getBoundingClientRect().top;
 
         if (elementTop < windowHeight - 100) {
-            section.classList.add("visible");
+          section.classList.add("visible");
         } else {
-            section.classList.remove("visible");
+          section.classList.remove("visible");
         }
+      });
+    }
+
+    window.addEventListener("scroll", revealOnScroll);
+    revealOnScroll();
+
+    // -------- MINI JUEGO --------
+
+    const mensaje = document.getElementById("mensaje");
+    const boton = document.getElementById("boton");
+    const modal = document.getElementById("modal");
+
+    let contador = 0;
+
+    boton.addEventListener("click", () => {
+      contador++;
+
+      if (contador === 1) {
+        mensaje.textContent = "Es en serio 😑";
+      }
+      else if (contador === 2) {
+        mensaje.textContent = "Última advertencia...";
+      }
+      else if (contador === 3) {
+        mensaje.textContent = "Desobediente jajaja";
+        modal.style.display = "flex";
+      }
+      else {
+        mensaje.textContent = "Qué más quiere? jajaja";
+      }
     });
-}
 
-window.addEventListener("scroll", revealOnScroll);
-revealOnScroll();
+    function cerrarModal() {
+      modal.style.display = "none";
+    }
 
-</script>
+
+  </script>
 
 </body>
+
 </html>
